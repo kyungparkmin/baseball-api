@@ -31,7 +31,7 @@ this_season = {
   'WAR*':'',
 };
 
-const getData = async (req, res) => {
+const getHitterData = async (req, res) => {
   const name = req.params.name;
   const URL = encodeURI(`http://www.statiz.co.kr/player.php?name=${name}`);
   try {
@@ -44,7 +44,7 @@ const getData = async (req, res) => {
 
       const $ = cheerio.load(content);
 
-      const bodyList = $('table tbody .oddrow_stz0:nth-of-type(3)').map(function (i, element){
+      $('table tbody .oddrow_stz0:nth-of-type(3)').map((i, element) => {
         this_season['년도'] = String($(element).find('td:nth-of-type(2) span').text());
         this_season['경기수'] = String($(element).find('td:nth-of-type(6) span').text());
         this_season['타석'] = String($(element).find('td:nth-of-type(7) span').text());
@@ -83,4 +83,4 @@ const getData = async (req, res) => {
 };
 
 
-module.exports = {getData};
+module.exports = {getHitterData};

@@ -3,6 +3,6 @@ const router = express.Router();
 
 const controller = require('../controllers/pitcher.controller');
 
-/*router.get('/:name', controller.getData)*/
+router.get('/:name', controller.getPitcherData);
 
 module.exports = router;
