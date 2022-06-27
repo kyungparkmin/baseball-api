@@ -6,6 +6,7 @@ const helmet = require('helmet')
 
 const hitterRouter = require('./routes/hitter');
 const pitcherRouter = require('./routes/pitcher');
+const teamRouter = require('./routes/team');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(helmet());
 
 app.use('/api/player/hitter', hitterRouter);
 app.use('/api/player/pitcher', pitcherRouter);
+app.use('/api/team', teamRouter);
 
 app.listen(3001, () => {
   console.log('server listening on http://localhost:3001');
