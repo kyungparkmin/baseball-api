@@ -2,18 +2,7 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const iconv = require('iconv-lite');
 
-const team_ranking = {
-  "순위":"",
-  "팀명":"",
-  "경기수":"",
-  "승":"",
-  "패":"",
-  "무":"",
-  "연속":"",
-  "출루율":"",
-  "장타율":"",
-  "최근10경기":"",
-};
+const team_ranking = [];
 
 const getTeamRankingData = async (req, res) => {
   const URL = "https://sports.news.naver.com/kbaseball/record/index?category=kbo";
@@ -42,24 +31,21 @@ const getTeamRankingData = async (req, res) => {
         let slg = $(tag).find("td:nth-of-type(10) span").text()
         let recentMatchs = $(tag).find("td:nth-of-type(11) span").text()
 
-
-        console.log({
-          rank,
-          team,
-          game,
-          win,
-          lose,
-          draw,
-          gameBehind,
-          continuity,
-          obp,
-          slg,
-          recentMatchs
-        });
+        team_ranking.push({
+          순위:rank,
+          팀명:team,
+          경기수:game,
+          승:win,
+          패:lose,
+          무:draw,
+          승차:gameBehind,
+          연속:continuity,
+          출루율:obp,
+          장타율:slg,
+          최근10경기:recentMatchs
+        })
       })
-    })
-    res.json({
-      team_ranking
+      res.json({team_ranking})
     })
   } catch (err) {
     console.error(err);
