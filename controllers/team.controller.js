@@ -2,10 +2,11 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const iconv = require('iconv-lite');
 
-const team_ranking = [];
+let team_ranking = [];
 
 const getTeamRankingData = async (req, res) => {
-  const URL = "https://sports.news.naver.com/kbaseball/record/index?category=kbo";
+  const year = req.params.year;
+  const URL = `https://sports.news.naver.com/kbaseball/record/index?category=kbo&year=${year}`;
   try {
     await axios({
       url : URL,
@@ -45,7 +46,9 @@ const getTeamRankingData = async (req, res) => {
           최근10경기:recentMatchs
         })
       })
-      res.json({team_ranking})
+      res.json(team_ranking)
+
+      team_ranking = [];
     })
   } catch (err) {
     console.error(err);
