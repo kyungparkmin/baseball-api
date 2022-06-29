@@ -4,7 +4,7 @@ const iconv = require('iconv-lite');
 
 let matchs = [];
 
-const getTodayMatchsData = async (req, res) => {
+export const getTodayMatchsData = async (req, res) => {
   const URL = `https://sports.news.naver.com/kbaseball/index`;
   try {
     await axios({
@@ -47,5 +47,3 @@ const getTodayMatchsData = async (req, res) => {
     console.error(err);
   }
 }
-
-module.exports = { getTodayMatchsData };

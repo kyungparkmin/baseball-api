@@ -4,7 +4,7 @@ const iconv = require('iconv-lite');
 
 let team_ranking = [];
 
-const getTeamRankingData = async (req, res) => {
+export const getTeamRankingData = async (req, res) => {
   const year = req.params.year;
   const URL = `https://sports.news.naver.com/kbaseball/record/index?category=kbo&year=${year}`;
   try {
@@ -54,6 +54,3 @@ const getTeamRankingData = async (req, res) => {
     console.error(err);
   }
 }
-
-
-module.exports = { getTeamRankingData }

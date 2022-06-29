@@ -35,7 +35,7 @@ const p_this_season = {
 
 const p_total_season = p_this_season;
 
-const getPitcherData = async (req, res) => {
+export const getPitcherData = async (req, res) => {
   const name = req.params.name;
   const URL = encodeURI(`http://www.statiz.co.kr/player.php?name=${name}`);
 
@@ -90,7 +90,7 @@ const getPitcherData = async (req, res) => {
 }
 
 
-const getPitcherTotalData = async (req, res) => {
+export const getPitcherTotalData = async (req, res) => {
   const name = req.params.name;
   const URL = encodeURI(`http://www.statiz.co.kr/player.php?name=${name}`);
 
@@ -143,5 +143,3 @@ const getPitcherTotalData = async (req, res) => {
     console.error(err);
   }
 }
-
-module.exports = { getPitcherData, getPitcherTotalData }
