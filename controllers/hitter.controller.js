@@ -33,7 +33,7 @@ const this_season = {
 
 const total_season = this_season;
 
-export const getHitterData = async (req, res) => {
+const getHitterData = async (req, res) => {
   const name = req.params.name;
   const URL = encodeURI(`http://www.statiz.co.kr/player.php?name=${name}`);
   try {
@@ -85,7 +85,7 @@ export const getHitterData = async (req, res) => {
 };
 
 
-export const getTotalHitterData = async (req, res) => {
+const getTotalHitterData = async (req, res) => {
   const name = req.params.name;
   const URL = encodeURI(`http://www.statiz.co.kr/player.php?name=${name}`);
   try {
@@ -135,3 +135,6 @@ export const getTotalHitterData = async (req, res) => {
     console.error(err);
   }
 }
+
+
+module.exports = { getHitterData, getTotalHitterData };
