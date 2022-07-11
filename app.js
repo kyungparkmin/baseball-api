@@ -18,10 +18,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use(helmet());
 
-app.get('/', (req, res) => {
-  res.send("main");
-})
-
 app.use('/api/player/hitter', hitterRouter);
 app.use('/api/player/pitcher', pitcherRouter);
 app.use('/api/team', teamRouter);
